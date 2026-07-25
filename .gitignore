@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.claude/scheduled_tasks.lock
+
+# Reference material kept locally only (has its own .git, large binaries).
+repo-reference/
