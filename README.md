@@ -1,30 +1,11 @@
-# Simulation Navier-Stokes 2D — Refroidissement de processeurs
+# Navier-Stokes 2D, refroidissement d'un processeur
 
-> ⚠️ **Projet en cours.** Le code et les résultats évoluent encore.
+Projet en cours.
 
-## Objectif
+L'idée est de simuler l'air qui circule naturellement autour d'une puce électronique, pour vérifier qu'elle reste sous sa température critique sans ventilation forcée.
 
-Simuler la convection naturelle de l'air autour d'une puce électronique afin de vérifier
-que celle-ci reste sous sa température critique de fonctionnement.
+Le modèle couple les équations de Navier-Stokes incompressibles à l'équation de la chaleur. Le couplage passe par l'approximation de Boussinesq : la densité de l'air n'est traitée comme variable que dans le terme de flottabilité, ce qui suffit à faire monter l'air chaud sans avoir à résoudre le cas compressible.
 
-## Modèle
+Côté discrétisation, j'utilise des éléments finis de Taylor-Hood, du P2 pour la vitesse et la température et du P1 pour la pression. Ce choix n'est pas cosmétique : un couple d'ordre égal ne vérifie pas la condition inf-sup et fait apparaître des oscillations parasites sur la pression. Le temps est traité en différences finies.
 
-- Équations de **Navier-Stokes incompressibles** couplées à l'**équation de la chaleur**
-- Couplage thermique par l'**approximation de Boussinesq** (la variation de densité
-  n'intervient que dans le terme de flottabilité)
-- Domaine 2D représentant la puce et l'air environnant
-
-## Discrétisation
-
-- **Éléments finis de Taylor-Hood** : P2 pour la vitesse et la température, P1 pour la pression
-  (condition inf-sup satisfaite)
-- **Différences finies** en temps
-
-## Stack
-
-`Python` · `NumPy` · éléments finis · EDP
-
----
-
-Auteur : **Thibaut TCHINHOUN** — élève ingénieur en Génie Mathématique et Modélisation (ENSGMM, UNSTIM Abomey)
-Portfolio : https://tchinhounthibautportfolio.vercel.app/
+Python, NumPy.
